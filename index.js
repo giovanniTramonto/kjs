@@ -24,7 +24,7 @@ const Stylus = require('koa-stylus');
 
 app.use(Stylus({
     src: './stylus/',
-    dest: "./assets/stylesheets/style.css"
+    dest: "./public/"
   })
 );
  
