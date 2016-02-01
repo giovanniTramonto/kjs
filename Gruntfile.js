@@ -12,7 +12,7 @@ module.exports = function(grunt) {
         src: [  'node_modules/jquery/dist/jquery.min.js'
                 //, 'script/js/main.js'
         ],
-        dest: 'public/script/js/<%= pkg.name %>.min.js'
+        dest: 'assets/script/js/<%= pkg.name %>.min.js'
       }
     },
     stylus: {
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         options: {
         },
         files: {
-          'public/css/style.css': ['stylus/**/*.styl'] // compile and concat into single file 
+          'assets/css/style.css': ['stylus/**/*.styl'] // compile and concat into single file 
         }
       }
     },
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         ]
       },
       dist: {
-        src: 'public/css/style.css'
+        src: 'assets/css/style.css'
       }
     },
     watch: {
