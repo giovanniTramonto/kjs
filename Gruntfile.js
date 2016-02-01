@@ -24,6 +24,23 @@ module.exports = function(grunt) {
         }
       }
     },
+    postcss: {
+      options: {
+        //map: {
+        //  inline: false, // save all sourcemaps as separate files...
+        //  annotation: 'dist/css/maps/' // ...to the specified directory
+        //},
+      
+        processors: [
+          //require('pixrem')(), // add fallbacks for rem units
+          require('autoprefixer')({browsers: 'last 2 versions'}) // add vendor prefixes
+          //require('cssnano')() // minify the result
+        ]
+      },
+      dist: {
+        src: 'public/css/style.css'
+      }
+    },
     watch: {
       files: ['stylus/*.styl'],
       tasks: ['stylus']
@@ -33,9 +50,13 @@ module.exports = function(grunt) {
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-watch');
   
   // Default task(s).
-  grunt.registerTask('default', ['uglify','stylus']);
+  grunt.registerTask('default', ['uglify','stylus', 'postcss']);
+  
+  // Events
+  grunt.event.on('watch', function(action, filepath) {});
 
 };

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start" : "node --harmony index.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +23,8 @@
     "url": "git@github.com:giovanniTramonto/kjs.git"
   },
   "dependencies": {
+    "autoprefixer": "^6.3.1",
+    "grunt-postcss": "^0.7.1",
     "koa-render": "^0.2.1",
     "koa-route": "^2.4.2"
   }

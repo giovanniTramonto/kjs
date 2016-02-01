@@ -1,1 +1,1 @@
-html,body{height:100%;margin:0;color:#f00}.someclass{position:relative;width:200px;margin:0 auto;top:30%;text-align:center}
+html,body{height:100%;margin:0;color:#f00}.someclass{position:relative;width:200px;margin:0 auto;top:30%;text-align:center;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex:row;-ms-flex:row;flex:row}
