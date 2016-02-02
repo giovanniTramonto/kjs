@@ -4,12 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "node --harmony index.js"
+    "start": "node --harmony index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-contrib-imagemin": "^1.0.0",
     "grunt-contrib-stylus": "^1.0.0",
     "grunt-contrib-uglify": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",

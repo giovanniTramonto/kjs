@@ -15,6 +15,16 @@ module.exports = function(grunt) {
         dest: 'assets/script/js/<%= pkg.name %>.min.js'
       }
     },
+    imagemin: {
+      dynamic: {                          // Another target
+        files: [{
+          expand: true,                  // Enable dynamic expansion
+          cwd: 'src/',                   // Src matches are relative to this path
+          src: ['stylus/i/img/*.{png,jpg,gif}'],   // Actual patterns to match
+          dest: 'assets/css/i/img/'                  // Destination path prefix
+        }]
+      }
+    },
     stylus: {
       compile: {
         options: {
@@ -49,12 +59,13 @@ module.exports = function(grunt) {
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-watch');
   
   // Default task(s).
-  grunt.registerTask('default', ['uglify','stylus', 'postcss']);
+  grunt.registerTask('default', ['uglify', 'imagemin', 'stylus', 'postcss' ]);
   
   // Events
   grunt.event.on('watch', function(action, filepath) {});
