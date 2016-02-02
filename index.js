@@ -35,28 +35,10 @@ const jade = new Jade({
 
 
 
-    
-
-//app.use( function* (next) {
-//  
-//  if( mime.lookup( this.url ) == 'text/css' ) {
-//    
-//    
-//    
-//    
-//  }
-//    
-//  yield next;
-//  
-//});
-
 app.use( router.get('/', function* () {
-  
-    this.render('index', "", true);
+  this.render('index', "", true);
     //this.render('index', locals_for_this_page, true)
-
-  })
-);
+}));
 
 app.use( router.get('*', function* () {
     var _this = this;
@@ -64,19 +46,12 @@ app.use( router.get('*', function* () {
     var hasFile = true;
     
     
-    // TODO: detection for file exists
-    //function fileExists(filePath) {
-    //  try
-    //  {
-    //      return true
-    //  }
-    //  catch (err)
-    //  {
-    //      return false;
-    //  }
-    //}
-    //hasFile = fileExists ( _this.url );
-    
+    try {
+      fs.statSync( __dirname + _this.url );
+    }
+    catch(err) {
+      if(err.code == 'ENOENT') hasFile = false;
+    }
 
     if( hasFile ) {
       
@@ -86,6 +61,8 @@ app.use( router.get('*', function* () {
           cType = 'text/css'; break;
         case 'text/javascript':
           cType = 'text/javascript'; break;
+        case 'image/x-icon':
+          cType = 'image/x-icon'; break;
         default:
           cType = 'text/plain';
       }
@@ -104,6 +81,7 @@ app.use( router.get('*', function* () {
     }
     else {
       this.render('404', "", true);
+      console.log( 'File does not exist: ' + _this.url  );
     }
      
   })
